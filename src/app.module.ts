@@ -1,7 +1,7 @@
 import { MongooseModule } from '@nestjs/mongoose';
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { userController } from './user.controller';
+import { userService } from './user.service';
 import { UserSchema } from './user.models';
 
 @Module({
@@ -9,7 +9,7 @@ import { UserSchema } from './user.models';
     MongooseModule.forRoot('mongodb+srv://riteshbenjwal:789456123@cluster-nestjs.mis8tc9.mongodb.net/?retryWrites=true&w=majority'),
     MongooseModule.forFeature([{name:'user',schema:UserSchema}])
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [userController],
+  providers: [userService],
 })
 export class AppModule {}

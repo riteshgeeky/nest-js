@@ -4,19 +4,19 @@ import {Model} from 'mongoose'
 import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
-export class AppService {
+export class userService {
   constructor(
     @InjectModel('user') private readonly userModel: Model<UserDocument>
   ){}
 
-  //  creating a user 
-  async createUser(user: User): Promise<User>{
+  //  register a user 
+  async registerUser(user: User): Promise<User>{
      const newUser = new this.userModel(user)
      return newUser.save()
   }
 
-  //  reading the user collection 
-  async readUser(){
+  //  get the user
+  async getUser(){
     return this.userModel.find({})
     .then((user)=>{return user})
     .catch((err)=>console.log(err))
